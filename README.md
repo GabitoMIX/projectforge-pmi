@@ -61,7 +61,7 @@ db-projectforge.argeworks.com
 → http://IP-SERVIDOR:18081
 ```
 
-Ajusta la IP si Dokploy no está en `192.168.13.204`.
+Ajusta la IP del Servidor Dokploy.
 
 ## Usuario inicial
 
