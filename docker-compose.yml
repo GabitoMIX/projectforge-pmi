@@ -53,6 +53,8 @@ services:
       PMA_ABSOLUTE_URI: "${PMA_ABSOLUTE_URI:-}"
       UPLOAD_LIMIT: 128M
       TZ: America/Bogota
+    volumes:
+      - ./docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro  
     ports:
       # Cosmos apuntará a http://IP_DEL_SERVIDOR_DOKPLOY:18081
       - "18081:80"
