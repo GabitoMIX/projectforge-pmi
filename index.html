@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProjectForge PMI | Plan de Gestión de Calidad</title>
+  <meta name="description" content="ProjectForge PMI es un MVP académico en PHP y MySQL para gestionar el Plan de Gestión de Calidad de proyectos." />
+  <link rel="icon" href="assets/projectforge-logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <img src="assets/projectforge-logo.svg" alt="Logo ProjectForge PMI" />
+        <span>ProjectForge PMI</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="#problema">Problema</a>
+        <a href="#solucion">Solución</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#instalacion">Instalación</a>
+        <a href="#documentacion">Documentación</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero section">
+      <div class="hero-content">
+        <p class="eyebrow">MVP académico · Gestión de proyectos · PMBOK</p>
+        <h1>Aplicación web para gestionar el Plan de Gestión de Calidad</h1>
+        <p class="hero-text">
+          ProjectForge PMI centraliza el diligenciamiento, edición, almacenamiento y visualización
+          del Plan de Gestión de Calidad de un proyecto, usando tecnologías ligeras y fáciles de desplegar.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://projectforge.argeworks.com" target="_blank" rel="noopener">
+            Ver demo funcional
+          </a>
+          <a class="btn btn-secondary" href="https://github.com/GabitoMIX/projectforge-pmi" target="_blank" rel="noopener">
+            Ver repositorio
+          </a>
+        </div>
+
+        <div class="status-strip" aria-label="Tecnologías usadas">
+          <span>PHP puro</span>
+          <span>MySQL/MariaDB</span>
+          <span>PDO</span>
+          <span>XAMPP</span>
+          <span>Docker</span>
+          <span>Dokploy + Cosmos</span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Resumen del proyecto">
+        <div class="card-glow"></div>
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <pre><code>ProjectForge PMI
+├─ app/
+│  ├─ config.php
+│  ├─ Database.php
+│  └─ QualityPlanRepository.php
+├─ public/
+│  └─ index.php
+├─ database/
+│  ├─ schema.sql
+│  └─ seed.sql
+└─ docs/
+   ├─ manual_usuario.md
+   ├─ manual_codigo.md
+   └─ despliegue_cosmos_dokploy.md</code></pre>
+      </aside>
+    </section>
+
+    <section id="problema" class="section split">
+      <div>
+        <p class="eyebrow">Contexto</p>
+        <h2>Problema que resuelve</h2>
+        <p>
+          En los proyectos académicos, los planes de calidad suelen elaborarse en documentos
+          separados, hojas de cálculo o formatos manuales. Esto puede causar duplicidad,
+          pérdida de trazabilidad, errores de versión y dificultad para generar una entrega formal.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="feature-icon">01</span>
+          <h3>Información dispersa</h3>
+          <p>El proyecto evita depender de varios archivos separados para documentar el plan de calidad.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon">02</span>
+          <h3>Falta de trazabilidad</h3>
+          <p>La información queda organizada por proyecto y almacenada en una base de datos.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon">03</span>
+          <h3>Entrega manual</h3>
+          <p>El sistema genera una vista tipo documento que puede imprimirse o guardarse como PDF.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="solucion" class="section">
+      <p class="eyebrow">Solución propuesta</p>
+      <h2>Un MVP funcional, documentado e instalable</h2>
+
+      <div class="cards-3">
+        <article class="info-card">
+          <h3>Gestión del plan</h3>
+          <p>
+            Permite registrar proyectos y diligenciar campos del Plan de Gestión de Calidad:
+            objetivos, responsables, métricas, entregables, criterios de aceptación y actividades.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h3>PHP + MySQL</h3>
+          <p>
+            La aplicación está construida con PHP puro, MySQL/MariaDB y PDO,
+            evitando frameworks pesados y facilitando su ejecución en XAMPP o Docker.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h3>Documentación completa</h3>
+          <p>
+            Incluye README, scripts SQL, manual de usuario, manual técnico,
+            explicación del código y guía de despliegue con Docker, Dokploy y Cosmos.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="arquitectura" class="section architecture">
+      <div>
+        <p class="eyebrow">Implementación</p>
+        <h2>Arquitectura de despliegue</h2>
+        <p>
+          El proyecto puede ejecutarse como un entorno tipo XAMPP dockerizado.
+          Dokploy administra los contenedores y Cosmos Cloud publica el servicio mediante reverse proxy.
+        </p>
+      </div>
+
+      <div class="diagram" role="img" aria-label="Arquitectura Cloudflare, Cosmos, Dokploy y Docker">
+        <div class="node">Cloudflare<br><small>DNS + Access</small></div>
+        <div class="arrow">↓</div>
+        <div class="node">Cosmos Cloud<br><small>Reverse proxy</small></div>
+        <div class="arrow">↓</div>
+        <div class="node">Dokploy<br><small>Host de contenedores</small></div>
+        <div class="arrow">↓</div>
+        <div class="stack">
+          <div>Apache + PHP</div>
+          <div>MariaDB</div>
+          <div>phpMyAdmin</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Alcance</p>
+      <h2>Funciones principales del MVP</h2>
+
+      <div class="check-grid">
+        <div>Inicio de sesión</div>
+        <div>Creación de proyectos</div>
+        <div>Edición de información</div>
+        <div>Eliminación de proyectos</div>
+        <div>Plan de Gestión de Calidad</div>
+        <div>Carga de logos</div>
+        <div>Base de datos MySQL</div>
+        <div>Vista tipo documento</div>
+        <div>Exportación mediante impresión a PDF</div>
+      </div>
+    </section>
+
+    <section id="instalacion" class="section install">
+      <p class="eyebrow">Instalación</p>
+      <h2>Dos formas de ejecutar el proyecto</h2>
+
+      <div class="install-grid">
+        <article class="code-card">
+          <div class="code-card-header">
+            <h3>Modo local con XAMPP</h3>
+            <button class="copy-btn" data-copy="xampp-code">Copiar</button>
+          </div>
+          <pre id="xampp-code"><code>1. Copiar el proyecto en:
+   C:\xampp\htdocs\projectforge-pmi
+
+2. Activar en php.ini:
+   extension=pdo_mysql
+   extension=gd
+
+3. Importar en phpMyAdmin:
+   database/plan_calidad_schema.sql
+   database/plan_calidad_seed.sql
+
+4. Abrir:
+   http://localhost/projectforge-pmi/public/</code></pre>
+        </article>
+
+        <article class="code-card">
+          <div class="code-card-header">
+            <h3>Modo Docker/Dokploy + Cosmos</h3>
+            <button class="copy-btn" data-copy="docker-code">Copiar</button>
+          </div>
+          <pre id="docker-code"><code>docker compose up -d --build
+
+Aplicación:
+http://IP_DOKPLOY:18080
+
+phpMyAdmin:
+http://IP_DOKPLOY:18081
+
+Cosmos:
+projectforge.argeworks.com    → http://IP_DOKPLOY:18080
+db-projectforge.argeworks.com → http://IP_DOKPLOY:18081</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section id="documentacion" class="section docs">
+      <p class="eyebrow">Repositorio</p>
+      <h2>Ramas recomendadas</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>main</span>
+          <p>Versión estable del MVP académico para revisión del profesor.</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>docker-cosmos</span>
+          <p>Implementación con Docker Compose, MariaDB, phpMyAdmin, Dokploy y Cosmos.</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>gh-pages</span>
+          <p>Página estática de presentación del proyecto, publicada con GitHub Pages.</p>
+        </div>
+      </div>
+
+      <div class="doc-actions">
+        <a class="btn btn-primary" href="https://github.com/TU_USUARIO/projectforge-pmi/tree/main" target="_blank" rel="noopener">Código fuente</a>
+        <a class="btn btn-secondary" href="https://github.com/TU_USUARIO/projectforge-pmi/tree/docker-cosmos" target="_blank" rel="noopener">Despliegue Docker</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>ProjectForge PMI · MVP académico para Gestión de Proyectos</p>
+    <p>Desarrollado con PHP, MySQL, Docker, Dokploy y Cosmos Cloud.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
