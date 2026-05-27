@@ -53,12 +53,12 @@ DB_ROOT_PASSWORD=CAMBIAR_ESTA_CLAVE_ROOT
 
 ```txt
 projectforge.argeworks.com
-→ http://192.168.13.204:18080
+→ http://IP-SERVIDOR:18080
 ```
 
 ```txt
 db-projectforge.argeworks.com
-→ http://192.168.13.204:18081
+→ http://IP-SERVIDOR:18081
 ```
 
 Ajusta la IP si Dokploy no está en `192.168.13.204`.
