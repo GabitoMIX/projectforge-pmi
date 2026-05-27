@@ -1,0 +1,62 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_NAME: "ProjectForge PMI"
+      APP_BASE_URL: "${APP_BASE_URL:-}"
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: "${DB_DATABASE:-plan_calidad_mvp}"
+      DB_USERNAME: "${DB_USERNAME:-projectforge}"
+      DB_PASSWORD: "${DB_PASSWORD:-projectforge_change_me}"
+      TZ: America/Bogota
+    volumes:
+      - projectforge_uploads:/var/www/html/public/uploads/logos
+    ports:
+      # Cosmos apuntará a http://IP_DEL_SERVIDOR_DOKPLOY:18080
+      - "18080:80"
+
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: "${DB_DATABASE:-plan_calidad_mvp}"
+      MARIADB_USER: "${DB_USERNAME:-projectforge}"
+      MARIADB_PASSWORD: "${DB_PASSWORD:-projectforge_change_me}"
+      MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD:-root_change_me}"
+      TZ: America/Bogota
+    volumes:
+      - projectforge_mysql:/var/lib/mysql
+      - ./database/plan_calidad_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./database/plan_calidad_seed.sql:/docker-entrypoint-initdb.d/02_seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h localhost -u root -p$${MARIADB_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  phpmyadmin:
+    image: phpmyadmin:5.2-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ABSOLUTE_URI: "${PMA_ABSOLUTE_URI:-}"
+      UPLOAD_LIMIT: 128M
+      TZ: America/Bogota
+    ports:
+      # Cosmos apuntará a http://IP_DEL_SERVIDOR_DOKPLOY:18081
+      - "18081:80"
+
+volumes:
+  projectforge_mysql:
+  projectforge_uploads:

@@ -1,0 +1,14 @@
+.git
+.github
+.env
+*.log
+Thumbs.db
+.DS_Store
+
+# Archivos cargados por usuarios
+public/uploads/logos/*
+!public/uploads/logos/.gitkeep
+!public/uploads/logos/.htaccess
+
+# No incluir comprimidos dentro de la imagen
+*.zip
